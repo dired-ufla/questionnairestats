@@ -31,4 +31,4 @@ $string['lb_course'] = 'Curso';
 $string['lb_amount_of_students'] = 'Quantidade de alunos';
 $string['lb_amount_of_responses'] = 'Quantidade de respostas';
 $string['lb_percentage_of_responses'] = '% de respostas';
-
+$string['lb_link_csv'] = 'Gerar arquivo CSV';

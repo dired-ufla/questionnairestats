@@ -34,8 +34,13 @@ $category = optional_param('category', ALL_CATEGORIES, PARAM_INT);
 $url = new moodle_url($CFG->wwwroot . '/report/feedbackstats/index.php');
 $link = html_writer::link($url, get_string('link_back', 'report_feedbackstats'));
 
+$url_csv = new moodle_url($CFG->wwwroot . '/report/feedbackstats/csvgen.php');
+$link_csv = html_writer::link($url_csv, get_string('lb_link_csv', 'report_feedbackstats'));
+
 echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('pluginname', 'report_feedbackstats') . ' - ' . $link);
+
+echo $link_csv;
 
 if ($category != ALL_CATEGORIES) {
 	$result = $DB->get_records(COURSE_TABLE_NAME, array('category'=>$category), "fullname");

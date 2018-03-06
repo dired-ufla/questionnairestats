@@ -32,3 +32,6 @@ $string['lb_amount_of_students'] = 'Amount of students';
 $string['lb_amount_of_responses'] = 'Amount of responses';
 $string['lb_percentage_of_responses'] = '% of responses';
 $string['lb_link_csv'] = 'Generate CSV file';
+$string['lb_shortname'] = 'Short name';
+$string['lb_fullname'] = 'Full name';
+$string['lb_feedbackname'] = 'Questionnarie';

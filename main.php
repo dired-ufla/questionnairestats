@@ -55,12 +55,18 @@ foreach ($result as $cs) {
     $row = array('<b>' . $cs->shortname . '</b>', '<b>' . $amount_of_students . '</b>', '');
     $table->data[] = $row;
     
-    // Building a list of feedback activities
+    // Deal with column the name update of the questionnarie module
+    $dbman = $DB->get_manager();
+    $column_name = 'courseid';
+    if (!$dbman->field_exists(QUESTIONNARIE_TABLE_NAME, 'courseid')) {
+		$column_name = 'owner';
+	}
     
-    $feedbackactivities = $DB->get_records(FEEDBACK_TABLE_NAME, array('course'=>$cs->id), "name");
+    // Building a list of feedback activities
+    $feedbackactivities = $DB->get_records(QUESTIONNARIE_TABLE_NAME, array($column_name=>$cs->id), "name");
     foreach ($feedbackactivities as $fback) {
 		// Count the number of feedback responses
-		$amount_of_responses = $DB->count_records(FEEDBACK_RESPONSES_TABLE_NAME, array('feedback'=>$fback->id));		
+		$amount_of_responses = $DB->count_records(QUESTIONNARIE_RESPONSES_TABLE_NAME, array('survey_id'=>$fback->id));		
 		
 		$perc_of_responses = 0;
 		if ($amount_of_students > 0) {

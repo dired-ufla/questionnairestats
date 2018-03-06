@@ -26,3 +26,5 @@
 $string['pluginname'] = 'Feedback statistics';
 $string['lb_all_categories'] = 'All categories';
 $string['lb_choose_category'] = 'Please choose a category';
+$string['link_back'] = 'Back';
+$string['lb_course'] = 'Course';

@@ -26,3 +26,6 @@
 $string['pluginname'] = 'Estatísticas sobre feedbacks';
 $string['lb_all_categories'] = 'Todas';
 $string['lb_choose_category'] = 'Por favor, selecione uma categoria';
+$string['link_back'] = 'Voltar';
+$string['lb_course'] = 'Curso';
+

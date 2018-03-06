@@ -27,3 +27,4 @@ defined('MOODLE_INTERNAL') || die;
 
 define('ALL_CATEGORIES', -1);
 define('COURSE_CATEGORIES_TABLE_NAME', 'course_categories');
+define('COURSE_TABLE_NAME', 'course');

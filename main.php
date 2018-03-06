@@ -45,11 +45,32 @@ if ($category != ALL_CATEGORIES) {
 
 $table = new html_table();
 
-$table->head = array(	get_string('lb_course', 'report_feedbackstats'));
+$table->head = array(get_string('lb_course', 'report_feedbackstats'), get_string('lb_amount_of_students', 'report_feedbackstats') . ' / ' . get_string('lb_amount_of_responses', 'report_feedbackstats'), 
+	get_string('lb_percentage_of_responses', 'report_feedbackstats'));
 foreach ($result as $cs) {
-    $row = array();
-    $row[] = $cs->shortname;
-	$table->data[] = $row;
+    $coursecontext = context_course::instance($cs->id);
+    $coursestudents = get_enrolled_users($coursecontext, 'mod/assignment:submit');
+    $amount_of_students = count($coursestudents);
+    
+    $row = array('<b>' . $cs->shortname . '</b>', '<b>' . $amount_of_students . '</b>', '');
+    $table->data[] = $row;
+    
+    // Building a list of feedback activities
+    
+    $feedbackactivities = $DB->get_records(FEEDBACK_TABLE_NAME, array('course'=>$cs->id), "name");
+    foreach ($feedbackactivities as $fback) {
+		// Count the number of feedback responses
+		$amount_of_responses = $DB->count_records(FEEDBACK_RESPONSES_TABLE_NAME, array('feedback'=>$fback->id));		
+		
+		$perc_of_responses = 0;
+		if ($amount_of_students > 0) {
+			$perc_of_responses = ($amount_of_responses / $amount_of_students) * 100;
+		}
+		
+		$row = array('&nbsp;&nbsp;&nbsp;&nbsp;<i>' . $fback->name . '</i>', $amount_of_responses,  ' (' . number_format($perc_of_responses, 2) . '%)');
+		$table->data[] = $row;
+	}
+    
 }
 
 echo html_writer::table($table);

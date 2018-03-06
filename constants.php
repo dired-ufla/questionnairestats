@@ -28,3 +28,5 @@ defined('MOODLE_INTERNAL') || die;
 define('ALL_CATEGORIES', -1);
 define('COURSE_CATEGORIES_TABLE_NAME', 'course_categories');
 define('COURSE_TABLE_NAME', 'course');
+define('FEEDBACK_TABLE_NAME', 'feedback');
+define('FEEDBACK_RESPONSES_TABLE_NAME', 'feedback_completed');

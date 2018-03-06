@@ -28,3 +28,6 @@ $string['lb_all_categories'] = 'All categories';
 $string['lb_choose_category'] = 'Please choose a category';
 $string['link_back'] = 'Back';
 $string['lb_course'] = 'Course';
+$string['lb_amount_of_students'] = 'Amount of students';
+$string['lb_amount_of_responses'] = 'Amount of responses';
+$string['lb_percentage_of_responses'] = '% of responses';

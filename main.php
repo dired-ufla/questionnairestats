@@ -38,9 +38,9 @@ echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('pluginname', 'report_feedbackstats') . ' - ' . $link);
 
 if ($category != ALL_CATEGORIES) {
-	$result = $DB->get_records(COURSE_TABLE_NAME, array('category'=>$category), "shortname");
+	$result = $DB->get_records(COURSE_TABLE_NAME, array('category'=>$category), "fullname");
 } else {
-	$result = $DB->get_records(COURSE_TABLE_NAME, null, "shortname");
+	$result = $DB->get_records(COURSE_TABLE_NAME, null, "fullname");
 }
 
 $table = new html_table();
@@ -52,7 +52,8 @@ foreach ($result as $cs) {
     $coursestudents = get_enrolled_users($coursecontext, 'mod/assignment:submit');
     $amount_of_students = count($coursestudents);
     
-    $row = array('<b>' . $cs->shortname . '</b>', '<b>' . $amount_of_students . '</b>', '');
+    $course_name = '<a href=' . $CFG->wwwroot . '/course/view.php?id=' . $cs->id . ' target="_blank">' . $cs->fullname . '</a>';
+    $row = array('<b>' . $course_name . '</b>', '<b>' . $amount_of_students . '</b>', '');
     $table->data[] = $row;
     
     // Deal with column the name update of the questionnarie module

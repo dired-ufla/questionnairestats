@@ -23,7 +23,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Estatísticas sobre feedbacks';
+$string['pluginname'] = 'Estatísticas sobre questionários';
 $string['lb_all_categories'] = 'Todas';
 $string['lb_choose_category'] = 'Por favor, selecione uma categoria';
 $string['link_back'] = 'Voltar';

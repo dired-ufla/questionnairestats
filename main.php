@@ -45,8 +45,8 @@ if ($category != ALL_CATEGORIES) {
 
 $table = new html_table();
 
-$table->head = array(get_string('lb_course', 'report_feedbackstats'), get_string('lb_amount_of_students_responses', 'report_feedbackstats'), 
-	get_string('lb_percentage_of_responses', 'report_feedbackstats'));
+$table->head = array(get_string('lb_course', 'report_feedbackstats'), '<p align=right>' . get_string('lb_amount_of_students_responses', 'report_feedbackstats') . '</p>', 
+	'<p align=right>' . get_string('lb_percentage_of_responses', 'report_feedbackstats') . '</p>');
 	
 foreach ($result as $cs) {
     $coursecontext = context_course::instance($cs->id);

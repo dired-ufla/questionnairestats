@@ -25,13 +25,15 @@
 
 $string['pluginname'] = 'Feedbacks statistics';
 $string['lb_all_categories'] = 'All categories';
+$string['lb_category'] = 'Category';
 $string['lb_choose_category'] = 'Please choose a category';
 $string['link_back'] = 'Back';
 $string['lb_course'] = 'Course';
+$string['lb_amount_of_students_responses'] = 'Amount of students/responses';
 $string['lb_amount_of_students'] = 'Amount of students';
 $string['lb_amount_of_responses'] = 'Amount of responses';
 $string['lb_percentage_of_responses'] = '% of responses';
-$string['lb_link_csv'] = 'Generate CSV file';
+$string['lb_link_csv'] = 'Export to CSV file';
 $string['lb_shortname'] = 'Short name';
 $string['lb_fullname'] = 'Full name';
 $string['lb_feedbackname'] = 'Questionnarie';

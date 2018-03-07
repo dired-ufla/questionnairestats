@@ -42,7 +42,7 @@ header('Content-Disposition: attachment; filename="sample.csv"');
 
 $fp = fopen('php://output', 'w');
 
-$head = array(get_string('lb_shortname', 'report_feedbackstats'), get_string('lb_fullname', 'report_feedbackstats'), 
+$head = array(get_string('lb_category', 'report_feedbackstats'), get_string('lb_shortname', 'report_feedbackstats'), get_string('lb_fullname', 'report_feedbackstats'), 
 	get_string('lb_feedbackname', 'report_feedbackstats'), get_string('lb_amount_of_students', 'report_feedbackstats'), 
 	get_string('lb_amount_of_responses', 'report_feedbackstats'), get_string('lb_percentage_of_responses', 'report_feedbackstats'));
 
@@ -53,6 +53,8 @@ foreach ($result as $cs) {
     $coursecontext = context_course::instance($cs->id);
     $coursestudents = get_enrolled_users($coursecontext, 'mod/assignment:submit');
     $amount_of_students = count($coursestudents);
+    
+    $cat = $DB->get_record(COURSE_CATEGORIES_TABLE_NAME, array('id'=>$cs->category));
     
     // Deal with column the name update of the questionnarie module
     $dbman = $DB->get_manager();
@@ -72,7 +74,7 @@ foreach ($result as $cs) {
 			$perc_of_responses = ($amount_of_responses / $amount_of_students) * 100;
 		}
 		
-		$row = array($cs->shortname, $cs->fullname, $fback->name, $amount_of_students, $amount_of_responses, number_format($perc_of_responses, 2));
+		$row = array($cat->name, $cs->shortname, $cs->fullname, $fback->name, $amount_of_students, $amount_of_responses, number_format($perc_of_responses, 2));
 		fputcsv($fp, $row);
 	}    
 }

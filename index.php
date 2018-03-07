@@ -37,12 +37,14 @@ $table = new html_table();
 
 $row = array();
 $row[] = '<a href=' . $CFG->wwwroot . '/report/feedbackstats/main.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_all_categories', 'report_feedbackstats') . '</a>';
+$row[] = '<a href=' . $CFG->wwwroot . '/report/feedbackstats/csvgen.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_link_csv', 'report_feedbackstats') . '</a>';
 $table->data[] = $row;
 
 $table->head = array(	get_string('lb_choose_category', 'report_feedbackstats'));
 foreach ($result as $cs) {
     $row = array();
     $row[] = '<a href=' . $CFG->wwwroot . '/report/feedbackstats/main.php?category=' . $cs->id . '>' . $cs->name . '</a>';
+	$row[] = '<a href=' . $CFG->wwwroot . '/report/feedbackstats/csvgen.php?category=' . $cs->id . '>' . get_string('lb_link_csv', 'report_feedbackstats') . '</a>';
 	$table->data[] = $row;
 }
 

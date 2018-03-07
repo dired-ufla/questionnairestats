@@ -25,13 +25,15 @@
 
 $string['pluginname'] = 'Estatísticas sobre enquetes';
 $string['lb_all_categories'] = 'Todas';
+$string['lb_category'] = 'Categoria';
 $string['lb_choose_category'] = 'Por favor, selecione uma categoria';
 $string['link_back'] = 'Voltar';
 $string['lb_course'] = 'Curso';
+$string['lb_amount_of_students_responses'] = 'Quantidade de alunos/respostas';
 $string['lb_amount_of_students'] = 'Quantidade de alunos';
 $string['lb_amount_of_responses'] = 'Quantidade de respostas';
 $string['lb_percentage_of_responses'] = '% de respostas';
-$string['lb_link_csv'] = 'Gerar arquivo CSV';
+$string['lb_link_csv'] = 'Exportar para CSV';
 $string['lb_shortname'] = 'Nome breve';
 $string['lb_fullname'] = 'Nome completo';
 $string['lb_feedbackname'] = 'Enquete';

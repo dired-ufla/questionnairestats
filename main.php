@@ -34,13 +34,8 @@ $category = optional_param('category', ALL_CATEGORIES, PARAM_INT);
 $url = new moodle_url($CFG->wwwroot . '/report/feedbackstats/index.php');
 $link = html_writer::link($url, get_string('link_back', 'report_feedbackstats'));
 
-$url_csv = new moodle_url($CFG->wwwroot . '/report/feedbackstats/csvgen.php');
-$link_csv = html_writer::link($url_csv, get_string('lb_link_csv', 'report_feedbackstats'));
-
 echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('pluginname', 'report_feedbackstats') . ' - ' . $link);
-
-echo $link_csv;
 
 if ($category != ALL_CATEGORIES) {
 	$result = $DB->get_records(COURSE_TABLE_NAME, array('category'=>$category), "fullname");
@@ -50,15 +45,16 @@ if ($category != ALL_CATEGORIES) {
 
 $table = new html_table();
 
-$table->head = array(get_string('lb_course', 'report_feedbackstats'), get_string('lb_amount_of_students', 'report_feedbackstats') . ' / ' . get_string('lb_amount_of_responses', 'report_feedbackstats'), 
+$table->head = array(get_string('lb_course', 'report_feedbackstats'), get_string('lb_amount_of_students_responses', 'report_feedbackstats'), 
 	get_string('lb_percentage_of_responses', 'report_feedbackstats'));
+	
 foreach ($result as $cs) {
     $coursecontext = context_course::instance($cs->id);
     $coursestudents = get_enrolled_users($coursecontext, 'mod/assignment:submit');
     $amount_of_students = count($coursestudents);
     
-    $course_name = '<a href=' . $CFG->wwwroot . '/course/view.php?id=' . $cs->id . ' target="_blank">' . $cs->fullname . '</a>';
-    $row = array('<b>' . $course_name . '</b>', '<b>' . $amount_of_students . '</b>', '');
+    $course_name = '<a href=' . $CFG->wwwroot . '/course/view.php?id=' . $cs->id . ' target="_blank">' . $cs->shortname . ' - ' . $cs->fullname . '</a>';
+    $row = array('<b>' . $course_name . '</b>', '<p align=right><b>' . $amount_of_students . '</b></p>', '');
     $table->data[] = $row;
     
     // Deal with column the name update of the questionnarie module
@@ -79,7 +75,7 @@ foreach ($result as $cs) {
 			$perc_of_responses = ($amount_of_responses / $amount_of_students) * 100;
 		}
 		
-		$row = array('&nbsp;&nbsp;&nbsp;&nbsp;<i>' . $fback->name . '</i>', $amount_of_responses,  ' (' . number_format($perc_of_responses, 2) . '%)');
+		$row = array('&nbsp;&nbsp;&nbsp;&nbsp;<i>' . $fback->name . '</i>', '<p align=right>' . $amount_of_responses . '</p>', '<p align=right>' . number_format($perc_of_responses, 2) . '%</p>');
 		$table->data[] = $row;
 	}
     

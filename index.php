@@ -34,6 +34,7 @@ echo $OUTPUT->header();
 $result = $DB->get_records(COURSE_CATEGORIES_TABLE_NAME, null, 'name');
 		
 $table = new html_table();
+$table->size = array( '80%', '20%');
 
 $row = array();
 $row[] = '<a href=' . $CFG->wwwroot . '/report/feedbackstats/main.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_all_categories', 'report_feedbackstats') . '</a>';

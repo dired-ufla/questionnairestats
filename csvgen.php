@@ -48,7 +48,6 @@ $head = array(get_string('lb_category', 'report_feedbackstats'), get_string('lb_
 
 fputcsv($fp, $head);
 
-
 foreach ($result as $cs) {
     $coursecontext = context_course::instance($cs->id);
     $coursestudents = get_enrolled_users($coursecontext, 'mod/assignment:submit');

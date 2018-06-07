@@ -60,7 +60,7 @@ foreach ($result as $cs) {
     // Deal with column the name update of the questionnarie module
     $dbman = $DB->get_manager();
     $column_name = 'courseid';
-    if (!$dbman->field_exists(QUESTIONNARIE_TABLE_NAME, 'courseid')) {
+    if (!$dbman->field_exists('questionnaire_survey', 'courseid')) {
 		$column_name = 'owner';
 	}
     

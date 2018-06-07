@@ -73,7 +73,7 @@ foreach ($result as $cs) {
 		
 		$dept = getDepartementFromCourseName($cs->shortname);
 		$course_name = '<a href=' . $CFG->wwwroot . '/course/view.php?id=' . $cs->id . ' target="_blank">' . $cs->shortname . ' - ' . $cs->fullname . '</a>';
-		$row = array($dept, $course_name, $fback->name, $amount_of_students . '/' . $amount_of_responses, number_format($perc_of_responses, 2));
+		$row = array($dept, $course_name, $fback->name, $amount_of_responses . '/'. $amount_of_students, number_format($perc_of_responses, 2));
 		$table->data[] = $row;
 	}
     

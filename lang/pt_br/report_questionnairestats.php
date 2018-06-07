@@ -22,7 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Estatísticas sobre questionários';
+$string['pluginname'] = 'Estatísticas sobre avaliação';
 $string['lb_all_categories'] = 'Todas';
 $string['lb_category'] = 'Categoria';
 $string['lb_choose_category'] = 'Por favor, selecione uma categoria';

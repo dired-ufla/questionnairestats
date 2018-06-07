@@ -44,17 +44,13 @@ if ($category != ALL_CATEGORIES) {
 
 $table = new html_table();
 
-$table->head = array(get_string('lb_course', 'report_questionnairestats'), '<p align=right>' . get_string('lb_amount_of_students_responses', 'report_questionnairestats') . '</p>', 
-	'<p align=right>' . get_string('lb_percentage_of_responses', 'report_questionnairestats') . '</p>');
+$table->head = array(get_string('lb_department', 'report_questionnairestats'), get_string('lb_course', 'report_questionnairestats'), get_string('lb_feedbackname', 'report_questionnairestats'), 
+	get_string('lb_amount_of_students_responses', 'report_questionnairestats'), get_string('lb_percentage_of_responses', 'report_questionnairestats'));
 	
 foreach ($result as $cs) {
     $coursecontext = context_course::instance($cs->id);
     $coursestudents = get_enrolled_users($coursecontext, 'mod/assignment:submit');
     $amount_of_students = count($coursestudents);
-    
-    $course_name = getDepartementFromCourseName($cs->shortname) . '- <a href=' . $CFG->wwwroot . '/course/view.php?id=' . $cs->id . ' target="_blank">' . $cs->shortname . ' - ' . $cs->fullname . '</a>';
-    $row = array('<b>' . $course_name . '</b>', '<p align=right><b>' . $amount_of_students . '</b></p>', '');
-    $table->data[] = $row;
     
     // Deal with column the name update of the questionnarie module
     $dbman = $DB->get_manager();
@@ -65,6 +61,7 @@ foreach ($result as $cs) {
     
     // Building a list of questionnaire activities
     $questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");
+    
     foreach ($questionnaireactivities as $fback) {
 		// Count the number of questionnaire responses
 		$amount_of_responses = $DB->count_records('questionnaire_response', array('survey_id'=>$fback->id));		
@@ -74,7 +71,9 @@ foreach ($result as $cs) {
 			$perc_of_responses = ($amount_of_responses / $amount_of_students) * 100;
 		}
 		
-		$row = array('&nbsp;&nbsp;&nbsp;&nbsp;<i>' . $fback->name . '</i>', '<p align=right>' . $amount_of_responses . '</p>', '<p align=right>' . number_format($perc_of_responses, 2) . '%</p>');
+		$dept = getDepartementFromCourseName($cs->shortname);
+		$course_name = '<a href=' . $CFG->wwwroot . '/course/view.php?id=' . $cs->id . ' target="_blank">' . $cs->shortname . ' - ' . $cs->fullname . '</a>';
+		$row = array($dept, $course_name, $fback->name, $amount_of_students . '/' . $amount_of_responses, number_format($perc_of_responses, 2));
 		$table->data[] = $row;
 	}
     

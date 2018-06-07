@@ -35,5 +35,5 @@ $string['lb_percentage_of_responses'] = '% de respostas';
 $string['lb_link_csv'] = 'Exportar para CSV';
 $string['lb_shortname'] = 'Nome breve';
 $string['lb_fullname'] = 'Nome completo';
-$string['lb_feedbackname'] = 'Enquete';
+$string['lb_feedbackname'] = 'Questionário';
 $string['lb_department'] = 'Departamento';

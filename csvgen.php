@@ -41,8 +41,8 @@ header('Content-Disposition: attachment; filename="sample.csv"');
 
 $fp = fopen('php://output', 'w');
 
-$head = array(get_string('lb_category', 'report_questionnairestats'), get_string('lb_shortname', 'report_questionnairestats'), get_string('lb_fullname', 'report_questionnairestats'), 
-	get_string('lb_department', 'report_questionnairestats'), get_string('lb_feedbackname', 'report_questionnairestats'), get_string('lb_amount_of_students', 'report_questionnairestats'), 
+$head = array(get_string('lb_department', 'report_questionnairestats'), get_string('lb_shortname', 'report_questionnairestats'), get_string('lb_fullname', 'report_questionnairestats'), 
+	get_string('lb_feedbackname', 'report_questionnairestats'), get_string('lb_amount_of_students', 'report_questionnairestats'), 
 	get_string('lb_amount_of_responses', 'report_questionnairestats'), get_string('lb_percentage_of_responses', 'report_questionnairestats'));
 
 fputcsv($fp, $head);
@@ -73,7 +73,7 @@ foreach ($result as $cs) {
 		}
 		
 		$dept = getDepartementFromCourseName($cs->shortname);
-		$row = array($cat->name, $cs->shortname, $cs->fullname, $dept, $fback->name, $amount_of_students, $amount_of_responses, number_format($perc_of_responses, 2));
+		$row = array($dept, $cs->shortname, $cs->fullname, $dept, $fback->name, $amount_of_students, $amount_of_responses, number_format($perc_of_responses, 2));
 		fputcsv($fp, $row);
 	}    
 }

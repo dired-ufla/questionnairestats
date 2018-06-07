@@ -36,3 +36,4 @@ $string['lb_link_csv'] = 'Export to CSV file';
 $string['lb_shortname'] = 'Short name';
 $string['lb_fullname'] = 'Full name';
 $string['lb_feedbackname'] = 'Questionnarie';
+$string['lb_department'] = 'Department';

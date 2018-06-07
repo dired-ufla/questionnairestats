@@ -52,7 +52,7 @@ foreach ($result as $cs) {
     $coursestudents = get_enrolled_users($coursecontext, 'mod/assignment:submit');
     $amount_of_students = count($coursestudents);
     
-    $course_name = '<a href=' . $CFG->wwwroot . '/course/view.php?id=' . $cs->id . ' target="_blank">' . $cs->shortname . ' (' . getDepartementFromCourseName($cs->shortname) . ')' . ' - ' . $cs->fullname . '</a>';
+    $course_name = getDepartementFromCourseName($cs->shortname) . '- <a href=' . $CFG->wwwroot . '/course/view.php?id=' . $cs->id . ' target="_blank">' . $cs->shortname . ' - ' . $cs->fullname . '</a>';
     $row = array('<b>' . $course_name . '</b>', '<p align=right><b>' . $amount_of_students . '</b></p>', '');
     $table->data[] = $row;
     

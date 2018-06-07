@@ -15,7 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'report_coursestats', language 'en'
  *
  * @package   	report
  * @subpackage 	questionnairestats
@@ -25,7 +24,7 @@
 
 require(dirname(__FILE__).'/../../config.php');
 require_once($CFG->libdir.'/adminlib.php');
-require(__DIR__. '/constants.php');
+require(__DIR__. '/util.php');
 
 admin_externalpage_setup('reportquestionnairestats', '', null, '', array('pagelayout'=>'report'));
 
@@ -53,7 +52,7 @@ foreach ($result as $cs) {
     $coursestudents = get_enrolled_users($coursecontext, 'mod/assignment:submit');
     $amount_of_students = count($coursestudents);
     
-    $course_name = '<a href=' . $CFG->wwwroot . '/course/view.php?id=' . $cs->id . ' target="_blank">' . $cs->shortname . ' - ' . $cs->fullname . '</a>';
+    $course_name = '<a href=' . $CFG->wwwroot . '/course/view.php?id=' . $cs->id . ' target="_blank">' . $cs->shortname . ' (' . getDepartementFromCourseName($cs->shortname) . ')' . ' - ' . $cs->fullname . '</a>';
     $row = array('<b>' . $course_name . '</b>', '<p align=right><b>' . $amount_of_students . '</b></p>', '');
     $table->data[] = $row;
     

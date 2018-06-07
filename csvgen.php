@@ -15,7 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'report_coursestats', language 'en'
  *
  * @package   	report
  * @subpackage 	questionnairestats
@@ -25,7 +24,7 @@
 
 require(dirname(__FILE__).'/../../config.php');
 require_once($CFG->libdir.'/adminlib.php');
-require(__DIR__. '/constants.php');
+require(__DIR__. '/util.php');
 
 admin_externalpage_setup('reportquestionnairestats', '', null, '', array('pagelayout'=>'report'));
 

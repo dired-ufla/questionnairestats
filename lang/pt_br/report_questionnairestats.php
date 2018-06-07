@@ -15,7 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'report_coursestats', language 'en'
  *
  * @package   report
  * @subpackage questionnairestats

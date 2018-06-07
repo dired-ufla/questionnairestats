@@ -26,6 +26,11 @@ defined('MOODLE_INTERNAL') || die;
 
 define('ALL_CATEGORIES', -1);
 
+// Question types
+define('RANK', 8);
+define('TEXT', 3);
+define('MENU', 6);
+
 function getDepartementFromCourseName($str_course_name) {
 	if (stripos($str_course_name, 'gae') !== false) {
 		return 'DAE';
@@ -79,3 +84,24 @@ function getDepartementFromCourseName($str_course_name) {
 		return '?';
 	}
 }
+
+function get_quest_name($quest) {
+	global $DB;
+	
+	$quest_id = $quest->id;
+	$quest_type_id = $quest->type_id;
+	
+	if ($quest_type_id == RANK) {
+		$result = $DB->get_records('questionnaire_quest_choice', array('question_id'=>$quest_id));
+		$names = array();
+		foreach ($result as $name) {
+			$names[] = $name->content;
+		}
+		return $names;
+	} else if ($quest_type_id == MENU or $quest_type_id == TEXT) {				
+		return $quest->name;
+	} else {
+		return "ERROR_NO_SUPPORTED_QUESTION_TYPE";
+	}
+}
+

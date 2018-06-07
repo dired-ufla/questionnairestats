@@ -18,7 +18,7 @@
  * Strings for component 'report_coursestats', language 'en'
  *
  * @package   report
- * @subpackage feedbackstats
+ * @subpackage questionnairestats
  * @copyright 2018 Paulo Jr.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,7 +26,3 @@
 defined('MOODLE_INTERNAL') || die;
 
 define('ALL_CATEGORIES', -1);
-define('COURSE_CATEGORIES_TABLE_NAME', 'course_categories');
-define('COURSE_TABLE_NAME', 'course');
-define('QUESTIONNARIE_TABLE_NAME', 'questionnaire_survey');
-define('QUESTIONNARIE_RESPONSES_TABLE_NAME', 'questionnaire_response');

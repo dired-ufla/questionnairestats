@@ -18,7 +18,7 @@
  * Strings for component 'report_coursestats', language 'en'
  *
  * @package   	report
- * @subpackage 	feedbackstats
+ * @subpackage 	questionnairestats
  * @copyright 	2018 Paulo Jr.
  * @license   	http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,26 +27,26 @@ require(dirname(__FILE__).'/../../config.php');
 require_once($CFG->libdir.'/adminlib.php');
 require(__DIR__. '/constants.php');
 
-admin_externalpage_setup('reportfeedbackstats', '', null, '', array('pagelayout'=>'report'));
+admin_externalpage_setup('reportquestionnairestats', '', null, '', array('pagelayout'=>'report'));
 
 $category = optional_param('category', ALL_CATEGORIES, PARAM_INT);
 
-$url = new moodle_url($CFG->wwwroot . '/report/feedbackstats/index.php');
-$link = html_writer::link($url, get_string('link_back', 'report_feedbackstats'));
+$url = new moodle_url($CFG->wwwroot . '/report/questionnairestats/index.php');
+$link = html_writer::link($url, get_string('link_back', 'report_questionnairestats'));
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading(get_string('pluginname', 'report_feedbackstats') . ' - ' . $link);
+echo $OUTPUT->heading(get_string('pluginname', 'report_questionnairestats') . ' - ' . $link);
 
 if ($category != ALL_CATEGORIES) {
-	$result = $DB->get_records(COURSE_TABLE_NAME, array('category'=>$category), "fullname");
+	$result = $DB->get_records('course', array('category'=>$category), "fullname");
 } else {
-	$result = $DB->get_records(COURSE_TABLE_NAME, null, "fullname");
+	$result = $DB->get_records('course', null, "fullname");
 }
 
 $table = new html_table();
 
-$table->head = array(get_string('lb_course', 'report_feedbackstats'), '<p align=right>' . get_string('lb_amount_of_students_responses', 'report_feedbackstats') . '</p>', 
-	'<p align=right>' . get_string('lb_percentage_of_responses', 'report_feedbackstats') . '</p>');
+$table->head = array(get_string('lb_course', 'report_questionnairestats'), '<p align=right>' . get_string('lb_amount_of_students_responses', 'report_questionnairestats') . '</p>', 
+	'<p align=right>' . get_string('lb_percentage_of_responses', 'report_questionnairestats') . '</p>');
 	
 foreach ($result as $cs) {
     $coursecontext = context_course::instance($cs->id);
@@ -64,11 +64,11 @@ foreach ($result as $cs) {
 		$column_name = 'owner';
 	}
     
-    // Building a list of feedback activities
-    $feedbackactivities = $DB->get_records(QUESTIONNARIE_TABLE_NAME, array($column_name=>$cs->id), "name");
-    foreach ($feedbackactivities as $fback) {
-		// Count the number of feedback responses
-		$amount_of_responses = $DB->count_records(QUESTIONNARIE_RESPONSES_TABLE_NAME, array('survey_id'=>$fback->id));		
+    // Building a list of questionnaire activities
+    $questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");
+    foreach ($questionnaireactivities as $fback) {
+		// Count the number of questionnaire responses
+		$amount_of_responses = $DB->count_records('questionnaire_response', array('survey_id'=>$fback->id));		
 		
 		$perc_of_responses = 0;
 		if ($amount_of_students > 0) {

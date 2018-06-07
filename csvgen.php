@@ -18,7 +18,7 @@
  * Strings for component 'report_coursestats', language 'en'
  *
  * @package   	report
- * @subpackage 	feedbackstats
+ * @subpackage 	questionnairestats
  * @copyright 	2018 Paulo Jr.
  * @license   	http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,14 +27,14 @@ require(dirname(__FILE__).'/../../config.php');
 require_once($CFG->libdir.'/adminlib.php');
 require(__DIR__. '/constants.php');
 
-admin_externalpage_setup('reportfeedbackstats', '', null, '', array('pagelayout'=>'report'));
+admin_externalpage_setup('reportquestionnairestats', '', null, '', array('pagelayout'=>'report'));
 
 $category = optional_param('category', ALL_CATEGORIES, PARAM_INT);
 
 if ($category != ALL_CATEGORIES) {
-	$result = $DB->get_records(COURSE_TABLE_NAME, array('category'=>$category), "fullname");
+	$result = $DB->get_records('course', array('category'=>$category), "fullname");
 } else {
-	$result = $DB->get_records(COURSE_TABLE_NAME, null, "fullname");
+	$result = $DB->get_records('course', null, "fullname");
 }
 
 header('Content-Type: application/excel');
@@ -42,9 +42,9 @@ header('Content-Disposition: attachment; filename="sample.csv"');
 
 $fp = fopen('php://output', 'w');
 
-$head = array(get_string('lb_category', 'report_feedbackstats'), get_string('lb_shortname', 'report_feedbackstats'), get_string('lb_fullname', 'report_feedbackstats'), 
-	get_string('lb_feedbackname', 'report_feedbackstats'), get_string('lb_amount_of_students', 'report_feedbackstats'), 
-	get_string('lb_amount_of_responses', 'report_feedbackstats'), get_string('lb_percentage_of_responses', 'report_feedbackstats'));
+$head = array(get_string('lb_category', 'report_questionnairestats'), get_string('lb_shortname', 'report_questionnairestats'), get_string('lb_fullname', 'report_questionnairestats'), 
+	get_string('lb_feedbackname', 'report_questionnairestats'), get_string('lb_amount_of_students', 'report_questionnairestats'), 
+	get_string('lb_amount_of_responses', 'report_questionnairestats'), get_string('lb_percentage_of_responses', 'report_questionnairestats'));
 
 fputcsv($fp, $head);
 
@@ -53,20 +53,20 @@ foreach ($result as $cs) {
     $coursestudents = get_enrolled_users($coursecontext, 'mod/assignment:submit');
     $amount_of_students = count($coursestudents);
     
-    $cat = $DB->get_record(COURSE_CATEGORIES_TABLE_NAME, array('id'=>$cs->category));
+    $cat = $DB->get_record('course_categories', array('id'=>$cs->category));
     
     // Deal with column the name update of the questionnarie module
     $dbman = $DB->get_manager();
     $column_name = 'courseid';
-    if (!$dbman->field_exists(QUESTIONNARIE_TABLE_NAME, 'courseid')) {
+    if (!$dbman->field_exists('questionnaire_survey', 'courseid')) {
 		$column_name = 'owner';
 	}
     
-    // Building a list of feedback activities
-    $feedbackactivities = $DB->get_records(QUESTIONNARIE_TABLE_NAME, array($column_name=>$cs->id), "name");
-    foreach ($feedbackactivities as $fback) {
-		// Count the number of feedback responses
-		$amount_of_responses = $DB->count_records(QUESTIONNARIE_RESPONSES_TABLE_NAME, array('survey_id'=>$fback->id));		
+    // Building a list of questionnaire activities
+    $questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");
+    foreach ($questionnaireactivities as $fback) {
+		// Count the number of questionnaire responses
+		$amount_of_responses = $DB->count_records('questionnaire_response', array('survey_id'=>$fback->id));		
 		
 		$perc_of_responses = 0;
 		if ($amount_of_students > 0) {

@@ -18,16 +18,16 @@
  * Version details.
  *
  * @package    report
- * @subpackage feedbackstats
+ * @subpackage questionnairestats
  * @copyright  2018 Paulo Jr.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2018030622;         // The current plugin version (Date: YYYYMMDDXX)
+$plugin->version   = 2018060700;         // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2015051100;         // Requires this Moodle version
-$plugin->component = 'report_feedbackstats'; // Full name of the plugin (used for diagnostics)
+$plugin->component = 'report_questionnairestats'; // Full name of the plugin (used for diagnostics)
 $plugin->maturity = MATURITY_STABLE;
 $plugin->release = 'v1.0'; 
 $plugin->dependencies = array(

@@ -18,12 +18,12 @@
  * Strings for component 'report_coursestats', language 'en'
  *
  * @package   report
- * @subpackage feedbackstats
+ * @subpackage questionnairestats
  * @copyright 2017 Paulo Jr.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die;
 
-$ADMIN->add('reports', new admin_externalpage('reportfeedbackstats', get_string('pluginname', 'report_feedbackstats'), "$CFG->wwwroot/report/feedbackstats/index.php"));
+$ADMIN->add('reports', new admin_externalpage('reportquestionnairestats', get_string('pluginname', 'report_questionnairestats'), "$CFG->wwwroot/report/questionnairestats/index.php"));
 $settings = null;

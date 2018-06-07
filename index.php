@@ -18,7 +18,7 @@
  * Strings for component 'report_coursestats', language 'en'
  *
  * @package   	report
- * @subpackage 	feedbackstats
+ * @subpackage 	questionnairestats
  * @copyright 	2018 Paulo Jr.
  * @license   	http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,25 +27,25 @@ require(dirname(__FILE__).'/../../config.php');
 require_once($CFG->libdir.'/adminlib.php');
 require(__DIR__. '/constants.php');
 
-admin_externalpage_setup('reportfeedbackstats', '', null, '', array('pagelayout'=>'report'));
+admin_externalpage_setup('reportquestionnairestats', '', null, '', array('pagelayout'=>'report'));
 
 echo $OUTPUT->header();
 
-$result = $DB->get_records(COURSE_CATEGORIES_TABLE_NAME, null, 'name');
+$result = $DB->get_records('course_categories', null, 'name');
 		
 $table = new html_table();
 $table->size = array( '80%', '20%');
 
 $row = array();
-$row[] = '<a href=' . $CFG->wwwroot . '/report/feedbackstats/main.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_all_categories', 'report_feedbackstats') . '</a>';
-$row[] = '<a href=' . $CFG->wwwroot . '/report/feedbackstats/csvgen.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_link_csv', 'report_feedbackstats') . '</a>';
+$row[] = '<a href=' . $CFG->wwwroot . '/report/questionnairestats/main.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_all_categories', 'report_questionnairestats') . '</a>';
+$row[] = '<a href=' . $CFG->wwwroot . '/report/questionnairestats/csvgen.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_link_csv', 'report_questionnairestats') . '</a>';
 $table->data[] = $row;
 
-$table->head = array(	get_string('lb_choose_category', 'report_feedbackstats'));
+$table->head = array(	get_string('lb_choose_category', 'report_questionnairestats'));
 foreach ($result as $cs) {
     $row = array();
-    $row[] = '<a href=' . $CFG->wwwroot . '/report/feedbackstats/main.php?category=' . $cs->id . '>' . $cs->name . '</a>';
-	$row[] = '<a href=' . $CFG->wwwroot . '/report/feedbackstats/csvgen.php?category=' . $cs->id . '>' . get_string('lb_link_csv', 'report_feedbackstats') . '</a>';
+    $row[] = '<a href=' . $CFG->wwwroot . '/report/questionnairestats/main.php?category=' . $cs->id . '>' . $cs->name . '</a>';
+	$row[] = '<a href=' . $CFG->wwwroot . '/report/questionnairestats/csvgen.php?category=' . $cs->id . '>' . get_string('lb_link_csv', 'report_questionnairestats') . '</a>';
 	$table->data[] = $row;
 }
 

@@ -18,22 +18,22 @@
  * Strings for component 'report_coursestats', language 'en'
  *
  * @package   report
- * @subpackage feedbackstats
+ * @subpackage questionnairestats
  * @copyright 2018 Paulo Jr.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Estatísticas sobre enquetes';
-$string['lb_all_categories'] = 'Todas';
-$string['lb_category'] = 'Categoria';
-$string['lb_choose_category'] = 'Por favor, selecione uma categoria';
-$string['link_back'] = 'Voltar';
-$string['lb_course'] = 'Curso';
-$string['lb_amount_of_students_responses'] = 'Quantidade de alunos/respostas';
-$string['lb_amount_of_students'] = 'Quantidade de alunos';
-$string['lb_amount_of_responses'] = 'Quantidade de respostas';
-$string['lb_percentage_of_responses'] = '% de respostas';
-$string['lb_link_csv'] = 'Exportar para CSV';
-$string['lb_shortname'] = 'Nome breve';
-$string['lb_fullname'] = 'Nome completo';
-$string['lb_feedbackname'] = 'Enquete';
+$string['pluginname'] = 'Questionnaire statistics';
+$string['lb_all_categories'] = 'All categories';
+$string['lb_category'] = 'Category';
+$string['lb_choose_category'] = 'Please choose a category';
+$string['link_back'] = 'Back';
+$string['lb_course'] = 'Course';
+$string['lb_amount_of_students_responses'] = 'Amount of students/responses';
+$string['lb_amount_of_students'] = 'Amount of students';
+$string['lb_amount_of_responses'] = 'Amount of responses';
+$string['lb_percentage_of_responses'] = '% of responses';
+$string['lb_link_csv'] = 'Export to CSV file';
+$string['lb_shortname'] = 'Short name';
+$string['lb_fullname'] = 'Full name';
+$string['lb_feedbackname'] = 'Questionnarie';

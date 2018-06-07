@@ -27,53 +27,53 @@ defined('MOODLE_INTERNAL') || die;
 define('ALL_CATEGORIES', -1);
 
 function getDepartementFromCourseName($str_course_name) {
-	if (strpos($str_course_name, 'gae') !== false) {
+	if (stripos($str_course_name, 'gae') !== false) {
 		return 'DAE';
-	} else if (strpos($str_course_name, 'gag') !== false) {
+	} else if (stripos($str_course_name, 'gag') !== false) {
 		return 'DAG';
-	} else if (strpos($str_course_name, 'gbi') !== false) {
+	} else if (stripos($str_course_name, 'gbi') !== false) {
 		return 'DBI';
-	} else if (strpos($str_course_name, 'gca') !== false) {
+	} else if (stripos($str_course_name, 'gca') !== false) {
 		return 'DCA';
-	} else if (strpos($str_course_name, 'gcc') !== false) {
+	} else if (stripos($str_course_name, 'gcc') !== false) {
 		return 'DCC';
-	} else if (strpos($str_course_name, 'gcs') !== false) {
+	} else if (stripos($str_course_name, 'gcs') !== false) {
 		return 'DCS';
-	} else if (strpos($str_course_name, 'gsa') !== false) {
+	} else if (stripos($str_course_name, 'gsa') !== false) {
 		return 'DSA';
-	} else if (strpos($str_course_name, 'gex') !== false) {
+	} else if (stripos($str_course_name, 'gex') !== false) {
 		return 'DEX';
-	} else if (strpos($str_course_name, 'gef') !== false) {
+	} else if (stripos($str_course_name, 'gef') !== false) {
 		return 'DCF';
-	} else if (strpos($str_course_name, 'gch') !== false) {
+	} else if (stripos($str_course_name, 'gch') !== false) {
 		return 'DCH';
-	} else if (strpos($str_course_name, 'gdi') !== false) {
+	} else if (stripos($str_course_name, 'gdi') !== false) {
 		return 'DIR';
-	} else if (strpos($str_course_name, 'gde') !== false) {
+	} else if (stripos($str_course_name, 'gde') !== false) {
 		return 'DED';
-	} else if (strpos($str_course_name, 'gfd') !== false) {
+	} else if (stripos($str_course_name, 'gfd') !== false) {
 		return 'DEF';
-	} else if (strpos($str_course_name, 'gne') !== false) {
+	} else if (stripos($str_course_name, 'gne') !== false) {
 		return 'DEG';
-	} else if (strpos($str_course_name, 'gel') !== false) {
+	} else if (stripos($str_course_name, 'gel') !== false) {
 		return 'DEL';
-	} else if (strpos($str_course_name, 'get') !== false) {
+	} else if (stripos($str_course_name, 'get') !== false) {
 		return 'DEB';
-	} else if (strpos($str_course_name, 'ges') !== false) {
+	} else if (stripos($str_course_name, 'ges') !== false) {
 		return 'DES';
-	} else if (strpos($str_course_name, 'gfi') !== false) {
+	} else if (stripos($str_course_name, 'gfi') !== false) {
 		return 'DFI';
-	} else if (strpos($str_course_name, 'gfp') !== false) {
+	} else if (stripos($str_course_name, 'gfp') !== false) {
 		return 'DFP';
-	} else if (strpos($str_course_name, 'gnu') !== false) {
+	} else if (stripos($str_course_name, 'gnu') !== false) {
 		return 'DNU';
-	} else if (strpos($str_course_name, 'gmv') !== false) {
+	} else if (stripos($str_course_name, 'gmv') !== false) {
 		return 'DMV';
-	} else if (strpos($str_course_name, 'gqi') !== false) {
+	} else if (stripos($str_course_name, 'gqi') !== false) {
 		return 'DQI';
-	} else if (strpos($str_course_name, 'gzo') !== false) {
+	} else if (stripos($str_course_name, 'gzo') !== false) {
 		return 'DZO';
-	} else if (strpos($str_course_name, 'prg') !== false) {
+	} else if (stripos($str_course_name, 'prg') !== false) {
 		return 'PRG';
 	} else {
 		return '?';

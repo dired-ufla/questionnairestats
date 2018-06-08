@@ -35,7 +35,7 @@ if ($category != ALL_CATEGORIES) {
 }
 
 header('Content-Type: application/excel');
-header('Content-Disposition: attachment; filename="sample.csv"');
+header('Content-Disposition: attachment; filename="responses.csv"');
 
 $fp = fopen('php://output', 'w');
 

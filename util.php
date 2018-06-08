@@ -101,7 +101,7 @@ function get_quest_name($quest) {
 	} else if ($quest_type_id == MENU or $quest_type_id == TEXT) {				
 		return $quest->name;
 	} else {
-		return "ERROR_NO_SUPPORTED_QUESTION_TYPE";
+		return "ERROR_NO_SUPPORTED_QUESTION_TYPE: " . $quest_type_id;
 	}
 }
 
@@ -127,7 +127,7 @@ function get_quest_responses($quest, $resp_id) {
 		$resp = reset($result);
 		return $resp->choice_id;		
 	} else {
-		return "ERROR_NO_SUPPORTED_QUESTION_TYPE";
+		return "ERROR_NO_SUPPORTED_QUESTION_TYPE: " . $quest_type_id;
 	}
 	
 }

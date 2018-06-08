@@ -29,7 +29,11 @@ define('ALL_CATEGORIES', -1);
 // Question types
 define('RANK', 8);
 define('TEXT', 3);
+define('NUMERIC', 10);
 define('MENU', 6);
+define('RADIO', 4);
+define('PAGE_BREAK', 99);
+define('SECTION_BREAK', 100);
 
 function getDepartementFromCourseName($str_course_name) {
 	if (stripos($str_course_name, 'gae') !== false) {
@@ -98,8 +102,10 @@ function get_quest_name($quest) {
 			$names[] = $name->content;
 		}
 		return $names;
-	} else if ($quest_type_id == MENU or $quest_type_id == TEXT) {				
+	} else if ($quest_type_id == MENU or $quest_type_id == TEXT or $quest_type_id == RADIO or $quest_type_id == NUMERIC) {				
 		return $quest->name;
+	} else if ($quest_type_id == PAGE_BREAK or $quest_type_id == SECTION_BREAK) {				
+		return "";
 	} else {
 		return "ERROR_NO_SUPPORTED_QUESTION_TYPE: " . $quest_type_id;
 	}
@@ -118,14 +124,16 @@ function get_quest_responses($quest, $resp_id) {
 			$responses[] = $resp->rank;
 		}
 		return $responses;
-	} else if ($quest_type_id == TEXT) {				
+	} else if ($quest_type_id == TEXT or $quest_type_id == NUMERIC) {				
 		$result = $DB->get_records('questionnaire_response_text', array('question_id'=>$quest_id, 'response_id'=>$resp_id));
 		$resp = reset($result);
 		return $resp->response;		
-	} else if ($quest_type_id == MENU) {				
+	} else if ($quest_type_id == MENU or $quest_type_id == RADIO) {				
 		$result = $DB->get_records('questionnaire_resp_single', array('question_id'=>$quest_id, 'response_id'=>$resp_id));
 		$resp = reset($result);
 		return $resp->choice_id;		
+	} else if ($quest_type_id == PAGE_BREAK or $quest_type_id == SECTION_BREAK) {				
+		return "";
 	} else {
 		return "ERROR_NO_SUPPORTED_QUESTION_TYPE: " . $quest_type_id;
 	}

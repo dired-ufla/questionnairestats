@@ -34,6 +34,11 @@ if ($category != ALL_CATEGORIES) {
 	$result = $DB->get_records('course', null, "fullname");
 }
 
+header('Content-Type: application/excel');
+header('Content-Disposition: attachment; filename="sample.csv"');
+
+$fp = fopen('php://output', 'w');
+
 $cs = reset($result);
 if ($cs != null) {
 	
@@ -50,11 +55,6 @@ if ($cs != null) {
 	
 	if ($fback != null) {
 	
-		header('Content-Type: application/excel');
-		header('Content-Disposition: attachment; filename="sample.csv"');
-
-		$fp = fopen('php://output', 'w');
-
 		$head = array(get_string('lb_department', 'report_questionnairestats'), get_string('lb_shortname', 'report_questionnairestats'), 
 			get_string('lb_fullname', 'report_questionnairestats'));
 		
@@ -70,9 +70,45 @@ if ($cs != null) {
 					$head[] = $quest_name;
 				}
 			}
-		}		
-		
+		}				
 		fputcsv($fp, $head);
-		fclose($fp);
 	}
 }
+
+foreach ($result as $cs) {
+	// Deal with column the name update of the questionnarie module
+	$dbman = $DB->get_manager();
+	$column_name = 'courseid';
+	if (!$dbman->field_exists('questionnaire_survey', 'courseid')) {
+		$column_name = 'owner';
+	}
+    
+	// Building a list of questionnaire activities
+	$questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");
+	$fback = reset($questionnaireactivities);
+	
+	foreach ($questionnaireactivities as $fback) {
+		$dept = getDepartementFromCourseName($cs->shortname);		
+		$responses = $DB->get_records('questionnaire_response', array('survey_id'=>$fback->id));	
+		$questions = $DB->get_records('questionnaire_question', array('survey_id'=>$fback->id));	
+		
+		foreach ($responses as $resp) {
+			$resp_data = array($dept, $cs->shortname, $cs->fullname);
+			foreach ($questions as $quest) {
+				$quest_resp = get_quest_responses($quest, $resp->id);
+				if ($quest_resp != null) {
+					if (is_array($quest_resp)) {
+						foreach($quest_resp as $i) {
+							$resp_data[] = $i;
+						}
+					} else {
+						$resp_data[] = $quest_resp;
+					}
+				}
+			}
+			fputcsv($fp, $resp_data);
+		}
+	}	
+}
+
+fclose($fp);

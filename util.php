@@ -105,3 +105,30 @@ function get_quest_name($quest) {
 	}
 }
 
+function get_quest_responses($quest, $resp_id) {
+	global $DB;
+	
+	$quest_id = $quest->id;
+	$quest_type_id = $quest->type_id;
+	
+	if ($quest_type_id == RANK) {
+		$result = $DB->get_records('questionnaire_response_rank', array('question_id'=>$quest_id, 'response_id'=>$resp_id));
+		$responses = array();
+		foreach ($result as $resp) {
+			$responses[] = $resp->rank;
+		}
+		return $responses;
+	} else if ($quest_type_id == TEXT) {				
+		$result = $DB->get_records('questionnaire_response_text', array('question_id'=>$quest_id, 'response_id'=>$resp_id));
+		$resp = reset($result);
+		return $resp->response;		
+	} else if ($quest_type_id == MENU) {				
+		$result = $DB->get_records('questionnaire_resp_single', array('question_id'=>$quest_id, 'response_id'=>$resp_id));
+		$resp = reset($result);
+		return $resp->choice_id;		
+	} else {
+		return "ERROR_NO_SUPPORTED_QUESTION_TYPE";
+	}
+	
+}
+

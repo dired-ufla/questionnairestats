@@ -98,11 +98,13 @@ foreach ($result as $cs) {
 			$pos = strrpos($cs->fullname, '-');
 			if ($pos === false) {
 				$teacher_names = '';
+				$fullname = $cs->fullname;
 			} else {
 				$teacher_names = substr($cs->fullname, $pos + 1);
+				$fullname = substr($cs->fullname, 0, $pos);
 			}
 			
-			$resp_data = array($dept, $cs->shortname, $cs->fullname, $teacher_names);
+			$resp_data = array($dept, $cs->shortname, $fullname, $teacher_names);
 			foreach ($questions as $quest) {
 				$quest_resp = get_quest_responses($quest, $resp->id);
 				if ($quest_resp != null) {

@@ -76,12 +76,14 @@ foreach ($result as $cs) {
 		$pos = strrpos($cs->fullname, '-');
 		if ($pos === false) {
 			$teacher_names = '';
+			$fullname = $cs->fullname;
 		} else {
 			$teacher_names = substr($cs->fullname, $pos + 1);
+			$fullname = substr($cs->fullname, 0, $pos);
 		}
 			
 		$dept = getDepartementFromCourseName($cs->shortname);
-		$row = array($dept, $cs->shortname, $cs->fullname, $teacher_names, $fback->name, $amount_of_responses, $amount_of_students, number_format($perc_of_responses, 2));
+		$row = array($dept, $cs->shortname, $fullname, $teacher_names, $fback->name, $amount_of_responses, $amount_of_students, number_format($perc_of_responses, 2));
 		fputcsv($fp, $row);
 	}    
 }

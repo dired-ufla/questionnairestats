@@ -38,3 +38,4 @@ $string['lb_shortname'] = 'Short name';
 $string['lb_fullname'] = 'Full name';
 $string['lb_feedbackname'] = 'Questionnarie';
 $string['lb_department'] = 'Department';
+$string['lb_teacher'] = 'Teacher(s)';

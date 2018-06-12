@@ -35,11 +35,12 @@ $result = $DB->get_records('course_categories', null, 'name');
 $table = new html_table();
 $table->size = array( '60%', '20%', '20%');
 
-$row = array();
-$row[] = '<a href=' . $CFG->wwwroot . '/report/questionnairestats/main.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_all_categories', 'report_questionnairestats') . '</a>';
-$row[] = '<a href=' . $CFG->wwwroot . '/report/questionnairestats/csvgen.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_link_csv', 'report_questionnairestats') . '</a>';
-$row[] = '<a href=' . $CFG->wwwroot . '/report/questionnairestats/csvgen_responses.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_link_csv_responses', 'report_questionnairestats') . '</a>';
-$table->data[] = $row;
+// Do not show all category line anymore
+// $row = array();
+// $row[] = '<a href=' . $CFG->wwwroot . '/report/questionnairestats/main.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_all_categories', 'report_questionnairestats') . '</a>';
+// $row[] = '<a href=' . $CFG->wwwroot . '/report/questionnairestats/csvgen.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_link_csv', 'report_questionnairestats') . '</a>';
+// $row[] = '<a href=' . $CFG->wwwroot . '/report/questionnairestats/csvgen_responses.php?category=' . ALL_CATEGORIES . '>' . get_string('lb_link_csv_responses', 'report_questionnairestats') . '</a>';
+// $table->data[] = $row;
 
 $table->head = array(	get_string('lb_choose_category', 'report_questionnairestats'));
 foreach ($result as $cs) {

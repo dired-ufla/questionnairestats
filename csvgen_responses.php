@@ -56,7 +56,7 @@ if ($cs != null) {
 	if ($fback != null) {
 	
 		$head = array(get_string('lb_department', 'report_questionnairestats'), get_string('lb_shortname', 'report_questionnairestats'), 
-			get_string('lb_fullname', 'report_questionnairestats'));
+			get_string('lb_fullname', 'report_questionnairestats'), get_string('lb_teacher', 'report_questionnairestats'));
 		
 		$questions = $DB->get_records('questionnaire_question', array('survey_id'=>$fback->id));	
 		foreach ($questions as $quest) {
@@ -93,7 +93,16 @@ foreach ($result as $cs) {
 		$questions = $DB->get_records('questionnaire_question', array('survey_id'=>$fback->id));	
 		
 		foreach ($responses as $resp) {
-			$resp_data = array($dept, $cs->shortname, $cs->fullname);
+			
+			// Catches the names of the teachers, based on the course fullname
+			$pos = strrpos($cs->fullname, '-');
+			if ($pos === false) {
+				$teacher_names = '';
+			} else {
+				$teacher_names = substr($cs->fullname, $pos + 1);
+			}
+			
+			$resp_data = array($dept, $cs->shortname, $cs->fullname, $teacher_names);
 			foreach ($questions as $quest) {
 				$quest_resp = get_quest_responses($quest, $resp->id);
 				if ($quest_resp != null) {

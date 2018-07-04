@@ -105,7 +105,7 @@ function get_quest_name($quest) {
 	} else if ($quest_type_id == MENU or $quest_type_id == TEXT or $quest_type_id == RADIO or $quest_type_id == NUMERIC) {				
 		return strip_tags($quest->content);
 	} else if ($quest_type_id == PAGE_BREAK or $quest_type_id == SECTION_BREAK) {				
-		return "-";
+		return "";
 	} else {
 		return "ERROR_NO_SUPPORTED_QUESTION_TYPE: " . $quest_type_id;
 	}
@@ -140,7 +140,7 @@ function get_quest_responses($quest, $resp_id) {
 			return $resp->content;
 		} 		
 	} else if ($quest_type_id == PAGE_BREAK or $quest_type_id == SECTION_BREAK) {				
-		return "-";
+		return "";
 	} else {
 		return "ERROR_NO_SUPPORTED_QUESTION_TYPE: " . $quest_type_id;
 	}

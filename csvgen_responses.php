@@ -39,9 +39,7 @@ header('Content-Disposition: attachment; filename="responses.csv"');
 
 $fp = fopen('php://output', 'w');
 
-$cs = reset($result);
-if ($cs != null) {
-	
+foreach($result as $cs) {	
 	// Deal with column the name update of the questionnarie module
 	$dbman = $DB->get_manager();
 	$column_name = 'courseid';
@@ -51,10 +49,7 @@ if ($cs != null) {
     
 	// Building a list of questionnaire activities
 	$questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");
-	$fback = reset($questionnaireactivities);
-	
-	if ($fback != null) {
-	
+	foreach($questionnaireactivities as $fback) {
 		$head = array(get_string('lb_department', 'report_questionnairestats'), get_string('lb_shortname', 'report_questionnairestats'), 
 			get_string('lb_fullname', 'report_questionnairestats'), get_string('lb_teacher', 'report_questionnairestats'));
 		
@@ -72,7 +67,9 @@ if ($cs != null) {
 			}
 		}				
 		fputcsv($fp, $head);
+		break;
 	}
+	break;
 }
 
 foreach ($result as $cs) {
@@ -89,7 +86,7 @@ foreach ($result as $cs) {
 	
 	foreach ($questionnaireactivities as $fback) {
 		$dept = getDepartementFromCourseName($cs->shortname);		
-		$responses = $DB->get_records('questionnaire_response', array('survey_id'=>$fback->id));	
+		$responses = $DB->get_records('questionnaire_response', array('survey_id'=>$fback->id, 'complete'=>'y'));	
 		$questions = $DB->get_records('questionnaire_question', array('survey_id'=>$fback->id, 'deleted'=>'n'));	
 		
 		foreach ($responses as $resp) {

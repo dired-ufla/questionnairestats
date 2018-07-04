@@ -82,7 +82,6 @@ foreach ($result as $cs) {
     
 	// Building a list of questionnaire activities
 	$questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");
-	$fback = reset($questionnaireactivities);
 	
 	foreach ($questionnaireactivities as $fback) {
 		$dept = getDepartementFromCourseName($cs->shortname);		

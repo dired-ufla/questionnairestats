@@ -127,7 +127,7 @@ function get_quest_responses($quest, $resp_id) {
 	} else if ($quest_type_id == TEXT or $quest_type_id == NUMERIC) {				
 		$result = $DB->get_records('questionnaire_response_text', array('question_id'=>$quest_id, 'response_id'=>$resp_id));
 		foreach($result as $resp) {
-			return strip_tags($result->response);		
+			return strip_tags($resp->response);		
 		}		
 	} else if ($quest_type_id == MENU or $quest_type_id == RADIO) {
 		$result = $DB->get_recordset_sql('SELECT * FROM {questionnaire_resp_single} resp JOIN {questionnaire_quest_choice} ch ON ch.id = resp.choice_id WHERE resp.question_id = :quest_id AND resp.response_id = :resp_id', 

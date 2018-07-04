@@ -97,7 +97,7 @@ foreach ($result as $cs) {
 			// Catches the names of the teachers, based on the course fullname
 			$pos = strrpos($cs->fullname, '-');
 			if ($pos === false) {
-				$teacher_names = '';
+				$teacher_names = '-';
 				$fullname = $cs->fullname;
 			} else {
 				$teacher_names = substr($cs->fullname, $pos + 1);

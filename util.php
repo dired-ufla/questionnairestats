@@ -99,11 +99,11 @@ function get_quest_name($quest) {
 		$result = $DB->get_records('questionnaire_quest_choice', array('question_id'=>$quest_id));
 		$names = array();
 		foreach ($result as $name) {
-			$names[] = $name->content;
+			$names[] = strip_tags($name->content);
 		}
 		return $names;
 	} else if ($quest_type_id == MENU or $quest_type_id == TEXT or $quest_type_id == RADIO or $quest_type_id == NUMERIC) {				
-		return $quest->name;
+		return strip_tags($quest->content);
 	} else if ($quest_type_id == PAGE_BREAK or $quest_type_id == SECTION_BREAK) {				
 		return "-";
 	} else {

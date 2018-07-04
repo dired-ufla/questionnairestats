@@ -58,7 +58,7 @@ if ($cs != null) {
 		$head = array(get_string('lb_department', 'report_questionnairestats'), get_string('lb_shortname', 'report_questionnairestats'), 
 			get_string('lb_fullname', 'report_questionnairestats'), get_string('lb_teacher', 'report_questionnairestats'));
 		
-		$questions = $DB->get_records('questionnaire_question', array('survey_id'=>$fback->id));	
+		$questions = $DB->get_records('questionnaire_question', array('survey_id'=>$fback->id, 'deleted'=>'n'));	
 		foreach ($questions as $quest) {
 			$quest_name = get_quest_name($quest);
 			if ($quest_name != null) {
@@ -90,7 +90,7 @@ foreach ($result as $cs) {
 	foreach ($questionnaireactivities as $fback) {
 		$dept = getDepartementFromCourseName($cs->shortname);		
 		$responses = $DB->get_records('questionnaire_response', array('survey_id'=>$fback->id));	
-		$questions = $DB->get_records('questionnaire_question', array('survey_id'=>$fback->id));	
+		$questions = $DB->get_records('questionnaire_question', array('survey_id'=>$fback->id, 'deleted'=>'n'));	
 		
 		foreach ($responses as $resp) {
 			

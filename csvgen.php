@@ -65,7 +65,7 @@ foreach ($result as $cs) {
     $questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");
     foreach ($questionnaireactivities as $fback) {
 		// Count the number of questionnaire responses
-		$amount_of_responses = $DB->count_records('questionnaire_response', array('survey_id'=>$fback->id, 'complete'=>'y'));		
+		$amount_of_responses = $DB->count_records('questionnaire_response', array('questionnaireid'=>$fback->id, 'complete'=>'y'));		
 		
 		$perc_of_responses = 0;
 		if ($amount_of_students > 0) {

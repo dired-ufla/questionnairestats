@@ -11,6 +11,7 @@ Hence, we developed "Questionnaire Statistics"; this is a Moodle report plugin t
 
 ## Releases
 
+- v1.1: fix the column name of a questionnaire plugin table.
 - v1.0: this is the first version of the plugin.
 
 

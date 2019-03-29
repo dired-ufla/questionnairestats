@@ -121,7 +121,7 @@ function get_quest_responses($quest, $resp_id) {
 		$result = $DB->get_records('questionnaire_response_rank', array('question_id'=>$quest_id, 'response_id'=>$resp_id));
 		$responses = array();
 		foreach ($result as $resp) {
-			$responses[] = $resp->rank;
+			$responses[] = $resp->rankvalue;
 		}
 		return $responses;
 	} else if ($quest_type_id == TEXT or $quest_type_id == NUMERIC) {				

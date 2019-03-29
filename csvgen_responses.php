@@ -39,47 +39,44 @@ header('Content-Disposition: attachment; filename="responses.csv"');
 
 $fp = fopen('php://output', 'w');
 
+// Deal with column the name update of the questionnarie module
+$dbman = $DB->get_manager();
+$column_name = 'courseid';
+if (!$dbman->field_exists('questionnaire_survey', 'courseid')) {
+	$column_name = 'owner';
+}
+
 foreach($result as $cs) {	
-	// Deal with column the name update of the questionnarie module
-	$dbman = $DB->get_manager();
-	$column_name = 'courseid';
-	if (!$dbman->field_exists('questionnaire_survey', 'courseid')) {
-		$column_name = 'owner';
-	}
-    
 	// Building a list of questionnaire activities
 	$questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");
-	foreach($questionnaireactivities as $fback) {
-		$head = array(get_string('lb_department', 'report_questionnairestats'), get_string('lb_shortname', 'report_questionnairestats'), 
-			get_string('lb_fullname', 'report_questionnairestats'), get_string('lb_teacher', 'report_questionnairestats'));
-		
-		$questions = $DB->get_records('questionnaire_question', array('surveyid'=>$fback->id, 'deleted'=>'n'), "name");	
-		foreach ($questions as $quest) {
-			$quest_name = get_quest_name($quest);
-			if ($quest_name != null) {
-				if (is_array($quest_name)) {
-					foreach($quest_name as $i) {
-						$head[] = $i;
+	if (!empty($questionnaireactivities)) {
+		foreach($questionnaireactivities as $fback) {
+			$head = array(get_string('lb_department', 'report_questionnairestats'), get_string('lb_shortname', 'report_questionnairestats'), 
+				get_string('lb_fullname', 'report_questionnairestats'), get_string('lb_teacher', 'report_questionnairestats'));
+			
+			$questions = $DB->get_records('questionnaire_question', array('surveyid'=>$fback->id, 'deleted'=>'n'), "name");	
+			foreach ($questions as $quest) {
+				$quest_name = get_quest_name($quest);
+				if ($quest_name != null) {
+					if (is_array($quest_name)) {
+						foreach($quest_name as $i) {
+							$head[] = $i;
+						}
+					} else {
+						$head[] = $quest_name;
 					}
-				} else {
-					$head[] = $quest_name;
 				}
-			}
-		}				
-		fputcsv($fp, $head);
+			}				
+			fputcsv($fp, $head);
+			break;
+		}
 		break;
+	} else {
+		continue;
 	}
-	break;
 }
 
 foreach ($result as $cs) {
-	// Deal with column the name update of the questionnarie module
-	$dbman = $DB->get_manager();
-	$column_name = 'courseid';
-	if (!$dbman->field_exists('questionnaire_survey', 'courseid')) {
-		$column_name = 'owner';
-	}
-    
 	// Building a list of questionnaire activities
 	$questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");
 	

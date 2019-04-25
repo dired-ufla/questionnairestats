@@ -23,7 +23,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Estatísticas sobre questionários';
+$string['pluginname'] = 'Estatísticas sobre enquetes e questionários';
 $string['lb_all_categories'] = 'Todas';
 $string['lb_category'] = 'Categoria';
 $string['lb_choose_category'] = 'Por favor, selecione uma categoria';
@@ -36,4 +36,4 @@ $string['lb_percentage_of_responses'] = '% de respostas';
 $string['lb_link_csv'] = 'Exportar para CSV';
 $string['lb_shortname'] = 'Nome breve';
 $string['lb_fullname'] = 'Nome completo';
-$string['lb_feedbackname'] = 'Enquete';
+$string['lb_feedbackname'] = 'Enquete/Questionário';

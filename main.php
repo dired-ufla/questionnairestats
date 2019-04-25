@@ -78,7 +78,23 @@ foreach ($result as $cs) {
 		$row = array('&nbsp;&nbsp;&nbsp;&nbsp;<i>' . $fback->name . '</i>', '<p align=right>' . $amount_of_responses . '</p>', '<p align=right>' . number_format($perc_of_responses, 2) . '%</p>');
 		$table->data[] = $row;
 	}
-    
+	 
+	// Building a list of quiz activities
+	$quizactivities = $DB->get_records('quiz', array('course'=>$cs->id), "name");
+	foreach ($quizactivities as $quiz) {
+		// Count the number of quiz responses
+		$amount_of_responses = $DB->count_records('quiz_attempts', array('quiz'=>$quiz->id, 'state'=>'finished'));		
+	
+		$perc_of_responses = 0;
+		if ($amount_of_students > 0) {
+			$perc_of_responses = ($amount_of_responses / $amount_of_students) * 100;
+		}
+	
+		$row = array('&nbsp;&nbsp;&nbsp;&nbsp;<i>' . $quiz->name . '</i>', '<p align=right>' . $amount_of_responses . '</p>', '<p align=right>' . number_format($perc_of_responses, 2) . '%</p>');
+		$table->data[] = $row;
+	}
+
+
 }
 
 echo html_writer::table($table);

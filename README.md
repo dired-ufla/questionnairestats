@@ -11,13 +11,7 @@ Hence, we developed "Questionnaire Statistics"; this is a Moodle report plugin t
 
 ## Releases
 
-- v1.2: fix csv generator.
-- v1.1: fix the column name of a questionnaire plugin table.
+- v1.3: now, the plugin also accepts quiz module.
+- v1.2: fixed csv generator.
+- v1.1: fixed the column name of a questionnaire plugin table.
 - v1.0: this is the first version of the plugin.
-
-
-
-
-
-
-

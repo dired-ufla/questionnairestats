@@ -28,6 +28,7 @@ define('ALL_CATEGORIES', -1);
 
 // Question types
 define('RANK', 8);
+define('TEXT_BOX', 2);
 define('TEXT', 3);
 define('NUMERIC', 10);
 define('MENU', 6);
@@ -102,7 +103,7 @@ function get_quest_name($quest) {
 			$names[] = strip_tags($name->content);
 		}
 		return $names;
-	} else if ($quest_type_id == MENU or $quest_type_id == TEXT or $quest_type_id == RADIO or $quest_type_id == NUMERIC) {				
+	} else if ($quest_type_id == MENU or $quest_type_id == TEXT or $quest_type_id == TEXT_BOX or $quest_type_id == RADIO or $quest_type_id == NUMERIC) {				
 		return strip_tags($quest->content);
 	} else if ($quest_type_id == PAGE_BREAK or $quest_type_id == SECTION_BREAK) {				
 		return "";
@@ -124,7 +125,7 @@ function get_quest_responses($quest, $resp_id) {
 			$responses[] = $resp->rankvalue;
 		}
 		return $responses;
-	} else if ($quest_type_id == TEXT or $quest_type_id == NUMERIC) {				
+	} else if ($quest_type_id == TEXT or $quest_type_id == TEXT_BOX or $quest_type_id == NUMERIC) {				
 		$result = $DB->get_records('questionnaire_response_text', array('question_id'=>$quest_id, 'response_id'=>$resp_id));
 		if ($result == null) {
 			return "-";

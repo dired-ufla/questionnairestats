@@ -52,12 +52,11 @@ foreach ($result as $cs) {
     $coursestudents = get_enrolled_users($coursecontext, 'mod/assignment:submit');
     $amount_of_students = count($coursestudents);
     
-    // Deal with column the name update of the questionnarie module
-    $dbman = $DB->get_manager();
+    //$dbman = $DB->get_manager();
     $column_name = 'courseid';
-    if (!$dbman->field_exists('questionnaire_survey', 'courseid')) {
-		$column_name = 'owner';
-	}
+    //if (!$dbman->field_exists('questionnaire_survey', 'courseid')) {
+	//	$column_name = 'owner';
+	//}
     
     // Building a list of questionnaire activities
     $questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");

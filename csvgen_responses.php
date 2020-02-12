@@ -40,11 +40,11 @@ header('Content-Disposition: attachment; filename="responses.csv"');
 $fp = fopen('php://output', 'w');
 
 // Deal with column the name update of the questionnarie module
-$dbman = $DB->get_manager();
+//$dbman = $DB->get_manager();
 $column_name = 'courseid';
-if (!$dbman->field_exists('questionnaire_survey', 'courseid')) {
-	$column_name = 'owner';
-}
+//if (!$dbman->field_exists('questionnaire_survey', 'courseid')) {
+//	$column_name = 'owner';
+//}
 
 foreach($result as $cs) {	
 	// Building a list of questionnaire activities

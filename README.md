@@ -11,6 +11,7 @@ Hence, we developed "Questionnaire Statistics"; this is a Moodle report plugin t
 
 ## Releases
 
+- v1.2.1: fixing an table name error. 
 - v1.2: update the list of supported question types: text box. 
 - v1.1: fix the column name of a questionnaire plugin table. 
 - v1.0: this is the first version of the plugin.

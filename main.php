@@ -53,13 +53,13 @@ foreach ($result as $cs) {
     $amount_of_students = count($coursestudents);
     
     //$dbman = $DB->get_manager();
-    $column_name = 'courseid';
+    $column_name = 'course';
     //if (!$dbman->field_exists('questionnaire_survey', 'courseid')) {
 	//	$column_name = 'owner';
 	//}
     
     // Building a list of questionnaire activities
-    $questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");
+    $questionnaireactivities = $DB->get_records('questionnaire', array($column_name=>$cs->id), "name");
     
     foreach ($questionnaireactivities as $fback) {
 		// Count the number of questionnaire responses

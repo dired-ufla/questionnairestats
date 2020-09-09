@@ -41,14 +41,14 @@ $fp = fopen('php://output', 'w');
 
 // Deal with column the name update of the questionnarie module
 //$dbman = $DB->get_manager();
-$column_name = 'courseid';
+$column_name = 'course';
 //if (!$dbman->field_exists('questionnaire_survey', 'courseid')) {
 //	$column_name = 'owner';
 //}
 
 foreach($result as $cs) {	
 	// Building a list of questionnaire activities
-	$questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");
+	$questionnaireactivities = $DB->get_records('questionnaire', array($column_name=>$cs->id), "name");
 	if (!empty($questionnaireactivities)) {
 		foreach($questionnaireactivities as $fback) {
 			$head = array(get_string('lb_department', 'report_questionnairestats'), get_string('lb_shortname', 'report_questionnairestats'), 
@@ -78,7 +78,7 @@ foreach($result as $cs) {
 
 foreach ($result as $cs) {
 	// Building a list of questionnaire activities
-	$questionnaireactivities = $DB->get_records('questionnaire_survey', array($column_name=>$cs->id), "name");
+	$questionnaireactivities = $DB->get_records('questionnaire', array($column_name=>$cs->id), "name");
 	
 	foreach ($questionnaireactivities as $fback) {
 		$dept = getDepartementFromCourseName($cs->shortname);		

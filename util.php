@@ -41,6 +41,8 @@ function getDepartementFromCourseName($str_course_name) {
 		return 'DAE';
 	} else if (stripos($str_course_name, 'gag') !== false) {
 		return 'DAG';
+	} else if (stripos($str_course_name, 'gat') !== false) {
+		return 'DAT';
 	} else if (stripos($str_course_name, 'gbi') !== false) {
 		return 'DBI';
 	} else if (stripos($str_course_name, 'gca') !== false) {
@@ -65,6 +67,8 @@ function getDepartementFromCourseName($str_course_name) {
 		return 'DEF';
 	} else if (stripos($str_course_name, 'gne') !== false) {
 		return 'DEG';
+	} else if (stripos($str_course_name, 'gea') !== false) {
+		return 'DEA';
 	} else if (stripos($str_course_name, 'gel') !== false) {
 		return 'DEL';
 	} else if (stripos($str_course_name, 'get') !== false) {
@@ -75,12 +79,16 @@ function getDepartementFromCourseName($str_course_name) {
 		return 'DFI';
 	} else if (stripos($str_course_name, 'gfp') !== false) {
 		return 'DFP';
+	} else if (stripos($str_course_name, 'gga') !== false) {
+		return 'CGA';
 	} else if (stripos($str_course_name, 'gnu') !== false) {
 		return 'DNU';
 	} else if (stripos($str_course_name, 'gmv') !== false) {
 		return 'DMV';
 	} else if (stripos($str_course_name, 'gqi') !== false) {
 		return 'DQI';
+	} else if (stripos($str_course_name, 'grs') !== false) {
+		return 'DRS';
 	} else if (stripos($str_course_name, 'gzo') !== false) {
 		return 'DZO';
 	} else if (stripos($str_course_name, 'prg') !== false) {

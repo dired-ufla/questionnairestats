@@ -80,7 +80,7 @@ function getDepartementFromCourseName($str_course_name) {
 	$dqi = array("gqi", "qui"); 
 	$drh = array("grh", "grs", "trs", "ers"); 
 	$dzo = array("gzo", "zoo", "tzo", "ezo"); 
-	$prograd = array("gctt"); 
+	$prograd = array("gctt", "prg"); 
 	
 	if (courseNameContains($str_course_name, $dac)) {
 		return 'DAC/ICET';

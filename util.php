@@ -129,93 +129,93 @@ function getDepartementFromCourseName($str_course_name) {
 	$prp = array("prp");
 	
 	if (courseNameContains($str_course_name, $pca)) {
-		return 'PPG Ciências dos Alimentos';
+		return 'PPG Ciências dos Alimentos/ESAL';
 	} else if (courseNameContains($str_course_name, $pad)) {
-		return 'PPG Administração Pública - Profissional';
+		return 'PPG Administração Pública - Profissional/FCSA';
 	} else if (courseNameContains($str_course_name, $dae)) {
-		return 'PPG Administração';
+		return 'PPG Administração/FCSA';
 	} else if (courseNameContains($str_course_name, $pfp)) {
-		return 'PPG Agronomia/Fitopatologia';
+		return 'PPG Agronomia/Fitopatologia/ESAL';
 	} else if (courseNameContains($str_course_name, $pag)) {
-		return 'PPG Agronomia/Fitotecnia';
+		return 'PPG Agronomia/Fitotecnia/ESAL';
 	} else if (courseNameContains($str_course_name, $pqi)) {
-		return 'PPG Agroquímica';
+		return 'PPG Agroquímica/ICN';
 	} else if (courseNameContains($str_course_name, $pba)) {
-		return 'PPG Botânica Aplicada';
+		return 'PPG Botânica Aplicada/ICN';
 	} else if (courseNameContains($str_course_name, $pbi)) {
-		return 'PPG Biotecnologia Vegetal';
+		return 'PPG Biotecnologia Vegetal/ICN';
 	} else if (courseNameContains($str_course_name, $pcc)) {
-		return 'PPG Ciência da Computação';
+		return 'PPG Ciência da Computação/ICET';
 	} else if (courseNameContains($str_course_name, $pcs)) {
-		return 'PPG Ciências do Solo';
+		return 'PPG Ciências do Solo/ESAL';
 	} else if (courseNameContains($str_course_name, $ptm)) {
-		return 'PPG Ciências e Tecnologia da Madeira';
+		return 'PPG Ciências e Tecnologia da Madeira/ESAL';
 	} else if (courseNameContains($str_course_name, $pgtpa)) {
-		return 'PPG Ciência e Tecnologia da Produção Animal - Profissional';
+		return 'PPG Ciência e Tecnologia da Produção Animal - Profissional/FZMV';
 	} else if (courseNameContains($str_course_name, $psa)) {
-		return 'PPG Ciências da Saúde';
+		return 'PPG Ciências da Saúde/FCS';
 	} else if (courseNameContains($str_course_name, $pmv)) {
-		return 'PPG Ciências Veterinárias';
+		return 'PPG Ciências Veterinárias/FZMV';
 	} else if (courseNameContains($str_course_name, $pds)) {
-		return 'PPG Desenvolvimento Sustentável e Extensão -Profissional';
+		return 'PPG Desenvolvimento Sustentável e Extensão - Profissional/FCSA';
 	} else if (courseNameContains($str_course_name, $pec)) {
-		return 'PPG Ecologia Aplicada';
+		return 'PPG Ecologia Aplicada/ICN';
 	} else if (courseNameContains($str_course_name, $ped)) {
-		return 'PPG Educação - Profissional';
+		return 'PPG Educação - Profissional/FAELCH';
 	} else if (courseNameContains($str_course_name, $pgeca)) {
-		return 'PPG Educação Científica e Ambiental';
+		return 'PPG Educação Científica e Ambiental/ICN';
 	} else if (courseNameContains($str_course_name, $peg)) {
-		return 'PPG Engenharia Agrícola';
+		return 'PPG Engenharia Agrícola/EENG';
 	} else if (courseNameContains($str_course_name, $pea)) {
-		return 'PPG Engenharia Ambiental';
+		return 'PPG Engenharia Ambiental/EENG';
 	} else if (courseNameContains($str_course_name, $pgal)) {
-		return 'PPG Engenharia de Alimentos';
+		return 'PPG Engenharia de Alimentos/ESAL';
 	} else if (courseNameContains($str_course_name, $peb)) {
-		return 'PPG Engenharia de Biomateriais';
+		return 'PPG Engenharia de Biomateriais/ESAL';
 	} else if (courseNameContains($str_course_name, $psi)) {
-		return 'PPG Engenharia de Sistemas e Automação';
+		return 'PPG Engenharia de Sistemas e Automação/EENG';
 	} else if (courseNameContains($str_course_name, $pcf)) {
-		return 'PPG Engenharia Florestal';
+		return 'PPG Engenharia Florestal/ESAL';
 	} else if (courseNameContains($str_course_name, $pecem)) {
-		return 'PPG Ensino de Ciências e Educação Matemática - Profissional';
+		return 'PPG Ensino de Ciências e Educação Matemática - Profissional/ICET';
 	} else if (courseNameContains($str_course_name, $pef)) {
-		return 'PPG Ensino de Física - Profissional';
+		return 'PPG Ensino de Física - Profissional/ICET';
 	} else if (courseNameContains($str_course_name, $pen)) {
-		return 'PPG Entomologia';
+		return 'PPG Entomologia/ESAL';
 	} else if (courseNameContains($str_course_name, $pex)) {
-		return 'PPG Estatística e Experimentação Agropecuária';
+		return 'PPG Estatística e Experimentação Agropecuária/ICET';
 	} else if (courseNameContains($str_course_name, $pfil)) {
-		return 'PPG Filosofia';
+		return 'PPG Filosofia/FAELCH';
 	} else if (courseNameContains($str_course_name, $pfi)) {
-		return 'PPG Ensino de Física - Associação Ampla - Profissional';
+		return 'PPG Ensino de Física - Associação Ampla - Profissional/ICET';
 	} else if (courseNameContains($str_course_name, $pfv)) {
-		return 'PPG Fisiologia Vegetal';
+		return 'PPG Fisiologia Vegetal/ICN';
 	} else if (courseNameContains($str_course_name, $ppgf)) {
-		return 'PPG Física';
+		return 'PPG Física/ICET';
 	} else if (courseNameContains($str_course_name, $pgm)) {
-		return 'PPG Genética e Melhoramento de Plantas';
+		return 'PPG Genética e Melhoramento de Plantas/ICN';
 	} else if (courseNameContains($str_course_name, $pgmp)) {
-		return 'PPG Genética e Melhoramento de Plantas - Profissional';
+		return 'PPG Genética e Melhoramento de Plantas - Profissional/ICN';
 	} else if (courseNameContains($str_course_name, $ppgl)) {
-		return 'PPG Letras';
+		return 'PPG Letras/FAELCH';
 	} else if (courseNameContains($str_course_name, $pma)) {
-		return 'PPG Matemática Rede Nacional - Profissional';
+		return 'PPG Matemática Rede Nacional - Profissional/ICET';
 	} else if (courseNameContains($str_course_name, $pmb)) {
-		return 'PPG Microbiologia Agrícola';
+		return 'PPG Microbiologia Agrícola/ICN';
 	} else if (courseNameContains($str_course_name, $pns)) {
-		return 'PPG Nutrição e Saúde';
+		return 'PPG Nutrição e Saúde/FCS';
 	} else if (courseNameContains($str_course_name, $pac)) {
-		return 'PPG Plantas Medicinais, Aromáticas e Codimentares';
+		return 'PPG Plantas Medicinais, Aromáticas e Codimentares/ESAL';
 	} else if (courseNameContains($str_course_name, $prh)) {
-		return 'PPG Recursos Hídricos';
+		return 'PPG Recursos Hídricos/EENG';
 	} else if (courseNameContains($str_course_name, $pta)) {
-		return 'PPG Tecnologias e Inovações Ambientais - Profissional';
+		return 'PPG Tecnologias e Inovações Ambientais - Profissional/ESAL';
 	} else if (courseNameContains($str_course_name, $pzo)) {
-		return 'PPG Zootecnia';
+		return 'PPG Zootecnia/FZMV';
 	} else if (courseNameContains($str_course_name, $ppmq)) {
-		return 'PPG Multicentrico em Química de Minas Gerais';
+		return 'PPG Multicentrico em Química de Minas Gerais/ICN';
 	} else if (courseNameContains($str_course_name, $prp)) {
-		return 'PRPG';
+		return 'PRPG/PRPG';
 	} else if (courseNameContains($str_course_name, $dac)) {
 		return 'DAC/ICET';
 	} else if (courseNameContains($str_course_name, $dae)) {

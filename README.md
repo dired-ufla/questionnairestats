@@ -11,6 +11,7 @@ Hence, we developed "Questionnaire Statistics"; this is a Moodle report plugin t
 
 ## Releases
 
+- v1.5: include academic units
 - v1.4: include postgraduate courses
 - v1.3: works with checkbox question type
 - v1.2.1: fixing an table name error. 

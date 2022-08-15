@@ -24,11 +24,11 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2021011302;         // The current plugin version (Date: YYYYMMDDXX)
+$plugin->version   = 2022081500;         // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2015051100;         // Requires this Moodle version
 $plugin->component = 'report_questionnairestats'; // Full name of the plugin (used for diagnostics)
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v1.3'; 
+$plugin->release = 'v1.4'; 
 $plugin->dependencies = array(
     'mod_questionnaire' => ANY_VERSION
 );

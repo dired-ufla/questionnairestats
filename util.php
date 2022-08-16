@@ -191,7 +191,7 @@ function getDepartementFromCourseName($str_course_name) {
 	} else if (courseNameContains($str_course_name, $pfv)) {
 		return 'PPG Fisiologia Vegetal/ICN';
 	} else if (courseNameContains($str_course_name, $ppgf)) {
-		return 'PPG Física/ICET';
+		return 'PPG Física/ICN';
 	} else if (courseNameContains($str_course_name, $pgm)) {
 		return 'PPG Genética e Melhoramento de Plantas/ICN';
 	} else if (courseNameContains($str_course_name, $pgmp)) {
